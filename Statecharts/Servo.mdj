@@ -20565,7 +20565,7 @@
 									},
 									"edgePosition": 1,
 									"underline": false,
-									"text": "command = ON / deg := 90",
+									"text": "ON / deg := 0",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -21029,7 +21029,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFf/uXChB6saMs="
 							},
-							"name": "command = ON / deg := 90",
+							"name": "ON / deg := 0",
 							"source": {
 								"$ref": "AAAAAAFf/uXuoR6ylBI="
 							},
