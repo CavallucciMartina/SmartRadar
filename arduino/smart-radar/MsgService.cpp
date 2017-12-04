@@ -1,9 +1,6 @@
 #include "Arduino.h"
 #include "MsgService.h"
 
-/*Bit rate definition for serial communication*/
-#define BAUD_RATE 9600
-
 String content;
 
 MsgServiceClass MsgService;
@@ -25,7 +22,7 @@ Msg* MsgServiceClass::receiveMsg(){
 }
 
 void MsgServiceClass::init(){
-  Serial.begin(BAUD_RATE);
+  Serial.begin(9600);
   content.reserve(256);
   content = "";
   currentMsg = NULL;
@@ -62,7 +59,7 @@ Msg* MsgServiceClass::receiveMsg(Pattern& pattern){
     return msg;  
   } else {
     return NULL; 
-  } 
+  }
 }
 
 
