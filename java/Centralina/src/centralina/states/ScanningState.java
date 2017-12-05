@@ -3,6 +3,7 @@ import centralina.*;
 
 public class ScanningState extends CentralinaState{
 
+	private float distance = 0;
 	@Override
 	public void doAction() {
 		// TODO Auto-generated method stub
@@ -11,7 +12,7 @@ public class ScanningState extends CentralinaState{
 
 	@Override
 	public CentralinaState nextState() {
-		// TODO Auto-generated method stub
+		if()
 		return null;
 	}
 
