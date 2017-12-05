@@ -9,11 +9,15 @@ public class DetectedState extends CentralinaState{
 	//maximum distance between two reads that still identifies the same object
 	public float delta;
 	private boolean objectTerminated;
+	public float timeFromStateStart;
+	public float maximumLedOnTime;
 	
 	public DetectedState() {
 		previousDistance = -1f;
 		newDistance = -1f;
 		objectTerminated = false;
+		timeFromStateStart = 0;
+		maximumLedOnTime = 0.1f;
 	}
 	
 	@Override
@@ -33,14 +37,23 @@ public class DetectedState extends CentralinaState{
 			}
 		}
 		
+		this.timeFromStateStart += this.centralina.getStateExecutionInterval();
+		if (this.timeFromStateStart >= this.maximumLedOnTime) {
+			this.centralina.setLedOn(false);
+		}
+		
+		
 	}
 
 	@Override
 	public CentralinaState nextState() {
-		if (this.objectTerminated) {
+		if (this.objectTerminated || this.centralina.shouldChangeDirection()) {
 			return new ScanningState();
+		} else if (this.newDistance <= this.centralina.MIN_DIST) {
+			return new TrackingState();
 		}
 		else {
+
 			return this;
 		}
 	}

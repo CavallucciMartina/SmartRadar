@@ -3,6 +3,7 @@ import centralina.states.*;
 
 public class Centralina {
 
+	public final float MIN_DIST = 0f;
 	private CentralinaState currentState;
 	
 	//Variables that give information on the state of the centralina
@@ -25,6 +26,36 @@ public class Centralina {
 	public float getDistance() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	
+	/**
+	 * Checks if the angle is 0 or 180
+	 * @return true if angle is 0 or 180, false otherwise
+	 */
+	public boolean shouldChangeDirection() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * 
+	 * @return how much time passes from one execution and another of one state of the fsm
+	 */
+	
+	public float getStateExecutionInterval() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	/**
+	 * Sets the value of the LedOn led
+	 * @param b true if the led has to be turned on, false to turn it off
+	 */
+	public void setLedOn(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
