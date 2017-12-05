@@ -1,19 +1,58 @@
 package centralina.states;
+
 import centralina.*;
 
-public class ScanningState extends CentralinaState{
+public class ScanningState extends CentralinaState {
 
-	private float distance = 0;
+	private float distance;
+	private boolean objectDetected;
+	private boolean tracking;
+	private boolean offButtonPressed;
+
+	public ScanningState() {
+		this.distance = -1f;
+		this.objectDetected = false;
+		this.tracking = false;
+		this.offButtonPressed = false;
+	}
+
 	@Override
 	public void doAction() {
-		// TODO Auto-generated method stub
-		
+		this.checkNewObject();
+		this.CheckOffButtonPressed();
 	}
 
 	@Override
 	public CentralinaState nextState() {
-		if()
-		return null;
+		if(this.objectDetected && !this.tracking) {
+			return new DetectedState();
+		}
+		else if(this.objectDetected && this.tracking) {
+			return new TrackingState();
+		}
+		else if(offButtonPressed) {
+			return new RepositioningState();
+		}
+		else {
+			return this;
+		}
+	}
+
+	private void checkNewObject() {
+		this.centralina.moveRadar();
+		this.distance = this.centralina.getDistance();
+		if (this.distance >= this.centralina.MIN_DIST && this.distance <= this.centralina.MAX_DIST) {
+			this.objectDetected = true;
+		} else if (this.distance < this.centralina.MIN_DIST) {
+			this.objectDetected = true;
+			this.tracking = true;
+		}
+	}
+	
+	private void CheckOffButtonPressed() {
+		if(this.centralina.IsBUttonOffPressed()) {
+			this.offButtonPressed = true;
+		}
 	}
 
 }
