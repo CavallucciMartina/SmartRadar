@@ -9,6 +9,7 @@ public class TestCentralinaController {
 		while (true) {
 			centralina.getCurrentState().doAction();
 			centralina.setCurrentState(centralina.getCurrentState().nextState());
+			//Sleep?
 		}
 	}
 
