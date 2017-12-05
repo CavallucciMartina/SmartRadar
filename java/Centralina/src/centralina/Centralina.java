@@ -81,6 +81,11 @@ public class Centralina {
 		//TODO
 		return false;
 	}
+	
+	public boolean isOnButtonPressed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	public int getDeg() {
 		//TODO
 		return 0;
