@@ -19,7 +19,9 @@ public class IdleState extends CentralinaState{
 		if(onButtonPressed) {
 			return new ScanningState();
 		}
-		return null;
+		else {
+			return this;
+		}
 	}
 	
 	private void checkOnButtonPressed() {
