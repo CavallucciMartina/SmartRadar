@@ -4,11 +4,15 @@ import centralina.states.*;
 public class Centralina {
 
 	public final float MIN_DIST = 0f;
+	
 	private CentralinaState currentState;
+	
+	private float distance;
 	
 	//Variables that give information on the state of the centralina
 	
 	public Centralina() {
+		distance = -1f;
 		setCurrentState(new IdleState());
 	}
 	
@@ -23,9 +27,15 @@ public class Centralina {
 	 * Rotates the servo and then reads the distance from the prox.
 	 * @return Distance detected from prox and transmitted via serial
 	 */
+	public void moveRadar() {
+		//check if direction should be changed
+		//move servo by sending msg
+		//store distance in variable
+	}
+	
+	
 	public float getDistance() {
-		// TODO Auto-generated method stub
-		return 0;
+		return distance;
 	}
 
 	
