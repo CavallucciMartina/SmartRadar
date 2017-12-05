@@ -77,6 +77,11 @@ public class Centralina {
 	public void setLedDetected(boolean b) {
 		// TODO Auto-generated method stub
 	}
+	
+	public void setLedConnected(boolean b) {
+		// TODO Auto-generated method stub
+	}
+	
 	public boolean IsBUttonOffPressed() {
 		//TODO
 		return false;
