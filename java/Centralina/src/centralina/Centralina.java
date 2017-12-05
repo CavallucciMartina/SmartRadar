@@ -3,7 +3,7 @@ import centralina.states.*;
 
 public class Centralina {
 
-	public final float MIN_DIST = 0f;
+	public final static float MIN_DIST = 0f;
 	private CentralinaState currentState;
 	
 	//Variables that give information on the state of the centralina
@@ -57,6 +57,17 @@ public class Centralina {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public void setLedTracking(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+	public boolean IsBUttonOffPressed() {
+		//TODO
+		return false;
+	}
+	public int getDeg() {
+		//TODO
+		return 0;
+	}
 	
 }
