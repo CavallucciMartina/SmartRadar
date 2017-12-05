@@ -27,7 +27,7 @@ public class ScanningState extends CentralinaState {
 		if(this.objectDetected && !this.tracking) {
 			return new DetectedState();
 		}
-		else if(this.objectDetected && this.tracking) {
+		else if(this.objectDetected && this.tracking) {			
 			return new TrackingState();
 		}
 		else if(offButtonPressed) {
@@ -43,9 +43,11 @@ public class ScanningState extends CentralinaState {
 		this.distance = this.centralina.getDistance();
 		if (this.distance >= this.centralina.MIN_DIST && this.distance <= this.centralina.MAX_DIST) {
 			this.objectDetected = true;
+			this.centralina.setLedDetected(true);
 		} else if (this.distance < this.centralina.MIN_DIST) {
 			this.objectDetected = true;
 			this.tracking = true;
+			this.centralina.setLedTracking(true);
 		}
 	}
 	
