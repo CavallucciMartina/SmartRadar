@@ -95,5 +95,9 @@ public class Centralina {
 		//TODO
 		return 0;
 	}
+	public int getDirection() {
+		//TODO
+		return 0;
+	}
 	
 }
