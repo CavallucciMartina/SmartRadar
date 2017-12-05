@@ -3,16 +3,31 @@ import centralina.*;
 
 public class IdleState extends CentralinaState{
 
+	private boolean onButtonPressed;
+	
+	public IdleState() {
+		this.onButtonPressed=false;		
+	}
+	
 	@Override
 	public void doAction() {
-		// TODO Auto-generated method stub
-		
+		checkOnButtonPressed();		
 	}
 
 	@Override
 	public CentralinaState nextState() {
-		// TODO Auto-generated method stub
+		if(onButtonPressed) {
+			return new ScanningState();
+		}
 		return null;
+	}
+	
+	private void checkOnButtonPressed() {
+		if(this.centralina.isOnButtonPressed()) {
+			this.onButtonPressed = true;
+			this.centralina.setLedOn(true);
+			this.centralina.setLedConnected(true);
+		}
 	}
 
 }
