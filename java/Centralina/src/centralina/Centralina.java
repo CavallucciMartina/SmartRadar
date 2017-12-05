@@ -1,15 +1,20 @@
 package centralina;
+import centralina.states.*;
 
 public class Centralina {
 
-	private State currentState;
+	private CentralinaState currentState;
 	
-	//Variables that give inofrmation on the state of the centralina
+	//Variables that give information on the state of the centralina
 	
-	public State getCurrentState() {
+	public Centralina() {
+		setCurrentState(new IdleState());
+	}
+	
+	public CentralinaState getCurrentState() {
 		return currentState;
 	}
-	public void setCurrentState(State newState) {
+	public void setCurrentState(CentralinaState newState) {
 		this.currentState = newState;
 	}
 	

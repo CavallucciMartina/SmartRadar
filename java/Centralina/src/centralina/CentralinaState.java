@@ -1,7 +1,10 @@
 package centralina;
 
-public abstract class CentralinaState implements State {
+public abstract class CentralinaState {
 
-	Centralina centralina;
+	public Centralina centralina;
+	
+	public abstract void doAction();
+	public abstract CentralinaState nextState();
 	
 }
