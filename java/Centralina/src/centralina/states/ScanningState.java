@@ -19,7 +19,7 @@ public class ScanningState extends CentralinaState {
 	@Override
 	public void doAction() {
 		this.checkNewObject();
-		this.CheckOffButtonPressed();
+		this.checkOffButtonPressed();
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class ScanningState extends CentralinaState {
 		}
 	}
 	
-	private void CheckOffButtonPressed() {
+	private void checkOffButtonPressed() {
 		if(this.centralina.IsBUttonOffPressed()) {
 			this.offButtonPressed = true;
 		}
