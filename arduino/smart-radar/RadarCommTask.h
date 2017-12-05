@@ -5,6 +5,7 @@
 #include "Led.h"
 #include "Sonar.h"
 #include "MsgService.h"
+#include "SleepMode.h"
 #include <ServoTimer2.h>
 
 class RadarCommTask: public Task {

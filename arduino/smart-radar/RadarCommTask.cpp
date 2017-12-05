@@ -28,13 +28,17 @@ void RadarCommTask::tick(){
     } else if (content == MSG_STOP_REQUEST){
       led->switchOff();
       Logger.log("RADAR: stop request.");
+      sleepNow();
+    } else if (content.toInt() <= 180 && content.toInt() >= 0) {
+       int actualDeg = servo->read();
+       int newDeg = map(content.toInt(), 0, 180, SERVO_MIN, SERVO_MAX);
+       servo->write(newDeg);
+       for (int i = 0; i < abs(actualDeg - newDeg); i++) {
+        delay(1);
+       }
+       Logger.log(String(prox->getDistance()));
     } else {
-      if (content.toInt() <= 180 && content.toInt() >= 0) {
-        servo->write(map(content.toInt(), 0, 180, SERVO_MIN, SERVO_MAX));
-        Logger.log(String(prox->getDistance()));
-      } else {
-        Logger.log("RADAR: ERROR - wrong message sent");
-      }
+       Logger.log("RADAR: ERROR - wrong message sent.");
     }
     delete msg;    
   }
