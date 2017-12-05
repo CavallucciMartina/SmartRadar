@@ -19,6 +19,10 @@
 	<classpathentry kind="lib" path="lib/pi4j-service-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/pi4j-service-sources.jar"/>
 	<classpathentry kind="lib" path="lib/pi4j-service.jar"/>
-	<classpathentry kind="lib" path="/home/martina/Desktop/Smart Radar/SmartRadar/java/Centralina/rxtx-2.2-dist/linux-x64/rxtx-2.2pre2.jar"/>
+	<classpathentry kind="lib" path="lib/RXTXcomm.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Centralina/lib/native"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
