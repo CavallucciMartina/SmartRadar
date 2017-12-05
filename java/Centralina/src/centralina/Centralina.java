@@ -5,6 +5,7 @@ public class Centralina {
 
 
 	public final static float MIN_DIST = 0f;
+	public final static float MAX_DIST = 2f;
 
 	private CentralinaState currentState;
 	
