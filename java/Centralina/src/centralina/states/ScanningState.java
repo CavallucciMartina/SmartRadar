@@ -52,7 +52,7 @@ public class ScanningState extends CentralinaState {
 	}
 	
 	private void checkOffButtonPressed() {
-		if(this.centralina.IsBUttonOffPressed()) {
+		if(this.centralina.IsButtonOffPressed()) {
 			this.offButtonPressed = true;
 		}
 	}

@@ -28,7 +28,8 @@ public class IdleState extends CentralinaState{
 		if(this.centralina.isOnButtonPressed()) {
 			this.onButtonPressed = true;
 			this.centralina.setLedOn(true);
-			this.centralina.setLedConnected(true);
+			this.centralina.radarOn();
+			
 		}
 	}
 

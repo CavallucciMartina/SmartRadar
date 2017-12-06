@@ -39,8 +39,9 @@ public class TrackingState extends CentralinaState {
 		}
 	}
 	private void CheckButtonOffPressed() {
-		if(this.centralina.IsBUttonOffPressed()) {
+		if(this.centralina.IsButtonOffPressed()) {
 			this.buttonOffPressed = true;
+			this.centralina.radarOff();
 		}
 	}
 
