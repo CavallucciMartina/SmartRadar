@@ -5,8 +5,9 @@ public class IdleState extends CentralinaState{
 
 	private boolean onButtonPressed;
 	
-	public IdleState() {
-		this.onButtonPressed=false;		
+	public IdleState(Centralina centralina) {
+		this.onButtonPressed=false;	
+		this.centralina = centralina;
 	}
 	
 	@Override
@@ -17,7 +18,7 @@ public class IdleState extends CentralinaState{
 	@Override
 	public CentralinaState nextState() {
 		if(onButtonPressed) {
-			return new ScanningState();
+			return new ScanningState(this.centralina);
 		}
 		else {
 			return this;

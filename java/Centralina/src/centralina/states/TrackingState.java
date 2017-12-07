@@ -1,5 +1,6 @@
 package centralina.states;
 
+import centralina.Centralina;
 import centralina.CentralinaState;
 
 public class TrackingState extends CentralinaState {
@@ -8,7 +9,7 @@ public class TrackingState extends CentralinaState {
 	private boolean objectTrackedTerminated;
 	private boolean buttonOffPressed;
 
-	public TrackingState() {
+	public TrackingState(Centralina centralina) {
 		super();
 		this.distance = -1f;
 		this.objectTrackedTerminated = false;
@@ -25,9 +26,9 @@ public class TrackingState extends CentralinaState {
 	public CentralinaState nextState() {
 	
 		if(this.objectTrackedTerminated) {
-			return new ScanningState();
+			return new ScanningState(this.centralina);
 		}else if(this.buttonOffPressed) {
-			return new RepositioningState();
+			return new RepositioningState(this.centralina);
 		}
 		return this;
 	}

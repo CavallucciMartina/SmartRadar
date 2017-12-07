@@ -15,7 +15,10 @@ public class Button extends ObservableButton {
 	
 	public Button(int pinNum){
 		super();
+		
+		System.out.println(pinNum);
 		try {
+			
 		    GpioController gpio = GpioFactory.getInstance();
 		    pin = gpio.provisionDigitalInputPin(Config.pinMap[pinNum],PinPullResistance.PULL_DOWN);
 		} catch (Exception e) {

@@ -9,8 +9,9 @@ public class ScanningState extends CentralinaState {
 	private boolean tracking;
 	private boolean offButtonPressed;
 
-	public ScanningState() {
+	public ScanningState(Centralina centralina) {
 		this.distance = -1f;
+		this.centralina = centralina;
 		this.objectDetected = false;
 		this.tracking = false;
 		this.offButtonPressed = false;
@@ -25,13 +26,13 @@ public class ScanningState extends CentralinaState {
 	@Override
 	public CentralinaState nextState() {
 		if(this.objectDetected && !this.tracking) {
-			return new DetectedState();
+			return new DetectedState(this.centralina);
 		}
 		else if(this.objectDetected && this.tracking) {			
-			return new TrackingState();
+			return new TrackingState(this.centralina);
 		}
 		else if(offButtonPressed) {
-			return new RepositioningState();
+			return new RepositioningState(this.centralina);
 		}
 		else {
 			return this;

@@ -1,5 +1,6 @@
 package centralina.states;
 
+import centralina.Centralina;
 import centralina.CentralinaState;
 
 public class RepositioningState extends CentralinaState{
@@ -7,8 +8,9 @@ public class RepositioningState extends CentralinaState{
 	private int deg ;
 
 
-	public RepositioningState() {
+	public RepositioningState(Centralina centralina) {
 		super();
+		this.centralina = centralina;
 		this.deg = this.centralina.getDeg();
 
 	}
@@ -28,7 +30,7 @@ public class RepositioningState extends CentralinaState{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return new IdleState();
+			return new IdleState(this.centralina);
 		}
 		return this;
 	

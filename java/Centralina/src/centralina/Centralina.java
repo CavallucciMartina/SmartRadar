@@ -23,11 +23,11 @@ public class Centralina {
 	private boolean clockWise;
 	private int omega;
 	
-	private Button buttonOn = new device.p4j.Button(26);
+	private Button buttonOn = new device.p4j.Button(13);
 	private Button buttonOff = new device.p4j.Button(19);
-	private device.Light ledOn = new Led(21);
-	private device.Light  ledDetected = new Led(20);
-	private device.Light  ledTracked =new Led(16);
+	private device.Light ledOn = new Led(18);
+	private device.Light  ledDetected = new Led(16);
+	private device.Light  ledTracked =new Led(12);
 	private static  int  INTERVAL = 20;
 	
 			
@@ -39,12 +39,13 @@ public class Centralina {
 			this.serial = new SerialCommChannel(port, 9600);
 		} catch (Exception e) {
 			System.out.println("Port not found");
+			System.out.println(port);
 			e.printStackTrace();
 		}
 		distance = -1f;
 		omega = 1;
 
-		setCurrentState(new IdleState());
+		setCurrentState(new IdleState(this));
 	}
 	
 	public CentralinaState getCurrentState() {

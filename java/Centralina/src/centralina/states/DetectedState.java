@@ -1,5 +1,6 @@
 package centralina.states;
 
+import centralina.Centralina;
 import centralina.CentralinaState;
 
 public class DetectedState extends CentralinaState{
@@ -13,8 +14,9 @@ public class DetectedState extends CentralinaState{
 	public float timeFromStateStart;
 	public float maximumLedOnTime;
 	
-	public DetectedState() {
+	public DetectedState(Centralina centralina) {
 		this.previousDistance = this.centralina.getDistance();
+		this.centralina = centralina;
 		this.newDistance = -1f;
 		this.delta = 1f;
 		this.objectTerminated = false;
@@ -31,9 +33,9 @@ public class DetectedState extends CentralinaState{
 	@Override
 	public CentralinaState nextState() {
 		if (this.objectTerminated || this.centralina.shouldChangeDirection()) {
-			return new ScanningState();
+			return new ScanningState(this.centralina);
 		} else if (this.newDistance <= this.centralina.MIN_DIST) {
-			return new TrackingState();
+			return new TrackingState(this.centralina);
 		}
 		else {
 
