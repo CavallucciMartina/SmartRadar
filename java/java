@@ -1,0 +1,1 @@
+/dev/ttyACM0 -cp bin:/usr/share/java/RXTXcomm.jar -Dpi4j.linking=dynamic -jar CentralinaAiuto.jar

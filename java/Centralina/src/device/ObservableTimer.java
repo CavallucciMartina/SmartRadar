@@ -12,10 +12,12 @@ public class ObservableTimer extends Observable  {
 	
 	public ObservableTimer(){		
 	        
-	    tickTask = () -> {
-	    	Tick ev = new Tick(System.currentTimeMillis());
-	    	notifyEvent(ev);
-	    };
+	    this.tickTask = new Runnable() {
+			public void run() {
+				Tick ev = new Tick(System.currentTimeMillis());
+		    	notifyEvent(ev);
+			}
+		};
 	}
 	
 	/**

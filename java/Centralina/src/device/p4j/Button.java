@@ -28,7 +28,6 @@ public class Button extends ObservableButton {
 		pin.addListener(new ButtonListener(this));
 	}
 	
-	@Override
 	public synchronized boolean isPressed() {
 		return pin.isHigh();
 	}

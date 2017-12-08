@@ -1,8 +1,6 @@
 package centralina;
+
 import java.io.IOException;
-
-import com.pi4j.component.light.Light;
-
 import centralina.states.*;
 import device.Button;
 import device.p4j.Led;

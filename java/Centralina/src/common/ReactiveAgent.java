@@ -1,8 +1,5 @@
 package common;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-
 public abstract class ReactiveAgent extends BasicEventLoopController {
 	
 	protected ReactiveAgent(int size){

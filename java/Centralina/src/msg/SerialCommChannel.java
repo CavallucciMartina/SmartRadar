@@ -4,7 +4,6 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
-
 import java.io.*;
 import java.util.concurrent.*;
 
@@ -45,7 +44,6 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 
 	}
 
-	@Override
 	public void sendMsg(String msg) {
 		char[] array = (msg+"\n").toCharArray();
 		byte[] bytes = new byte[array.length];
@@ -60,13 +58,11 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 		}
 	}
 
-	@Override
 	public String receiveMsg() throws InterruptedException {
 		// TODO Auto-generated method stub
 		return queue.take();
 	}
 
-	@Override
 	public boolean isMsgAvailable() {
 		// TODO Auto-generated method stub
 		return !queue.isEmpty();

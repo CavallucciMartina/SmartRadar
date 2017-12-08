@@ -4,21 +4,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-import common.*;
 import device.*;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class ObservableButton extends device.ObservableButton {
 
-	private int pinNum;
 	private boolean isPressed;
 	private ButtonFrame buttonFrame;
 	
 	public ObservableButton(int pinNum){
-		this.pinNum = pinNum;
 		try {
 			buttonFrame = new ButtonFrame(pinNum);
 			buttonFrame.setVisible(true);
@@ -27,7 +22,6 @@ public class ObservableButton extends device.ObservableButton {
 		}
 	}
 	
-	@Override
 	public synchronized boolean isPressed() {
 		return isPressed;
 	}
@@ -42,7 +36,10 @@ public class ObservableButton extends device.ObservableButton {
 	}
 	
 	class ButtonFrame extends JFrame implements MouseListener {
-		  public ButtonFrame(int pin){
+
+		private static final long serialVersionUID = 1L;
+
+		public ButtonFrame(int pin){
 		    super("Button Emu");
 		    setSize(200,50);
 		    JButton button = new JButton("Button on pin: "+pin);
@@ -55,25 +52,20 @@ public class ObservableButton extends device.ObservableButton {
 		    });
 		  }
 
-		@Override
 		public void mousePressed(MouseEvent e) {
 			setPressed(true);
 		}
 
-		@Override
 		public void mouseReleased(MouseEvent e) {
 			setPressed(false);
 		}
 
-		@Override
 		public void mouseEntered(MouseEvent e) {
 		}
-
-		@Override
+		
 		public void mouseExited(MouseEvent e) {
 		}
 
-		@Override
 		public void mouseClicked(MouseEvent e) {			
 		}
 	}
