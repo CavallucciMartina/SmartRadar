@@ -83,6 +83,7 @@ public class Centralina {
 
 	public float getDistance() {
 		try {
+			if(this.serial.isMsgAvailable())
 			distance = Float.parseFloat(this.serial.receiveMsg());
 			System.out.println(distance);
 		} catch (NumberFormatException e) {
@@ -91,6 +92,7 @@ public class Centralina {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	return distance;
 	}
 
