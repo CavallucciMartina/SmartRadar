@@ -19,6 +19,7 @@ public class TrackingState extends CentralinaState {
 	}
 	@Override
 	public void doAction() {
+		System.out.println("sono in TRACKING");
 		this.CheckObjectTrackEnd();
 		this.CheckButtonOffPressed();
 	}
