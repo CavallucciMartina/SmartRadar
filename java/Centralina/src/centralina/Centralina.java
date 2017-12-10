@@ -69,28 +69,27 @@ public class Centralina {
 
 		this.currentDeg = (this.currentDeg + (this.clockWise ? 1 : -1)
 				* this.omega);
+		if (this.currentDeg < 0) {
+			this.currentDeg = 0;
+		}
+		if (this.currentDeg > 180) {
+			this.currentDeg = 180;
+		}
 		this.serial.sendMsg(String.valueOf(this.currentDeg));
 
 	}
 
 	public float getDistance() {
-		if (serial.isMsgAvailable()) {
-			try {
-				distance = Float.parseFloat(this.serial.receiveMsg());
-				System.out.println(distance);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			distance = Float.parseFloat(this.serial.receiveMsg());
+			System.out.println(distance);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else{
-			distance = 3;
-		}
-		
-		return distance;
-
+	return distance;
 	}
 
 	/**

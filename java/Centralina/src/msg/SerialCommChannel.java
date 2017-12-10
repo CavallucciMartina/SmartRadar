@@ -5,6 +5,8 @@ import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.io.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 /**
  * Comm channel implementation based on serial port.
@@ -17,9 +19,11 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 	private SerialPort serialPort;
 	private BufferedReader input;
 	private OutputStream output;
-	private String queue;
+	private BlockingQueue<String> queue;
 
 	public SerialCommChannel(String port, int rate) throws Exception {
+		queue = new ArrayBlockingQueue<String>(100);
+		
 		CommPortIdentifier portId = CommPortIdentifier.getPortIdentifier(port);
 		// open serial port, and use class name for the appName.
 		SerialPort serialPort = (SerialPort) portId.open(this.getClass().getName(), 2000);
@@ -57,12 +61,18 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 
 	public String receiveMsg() throws InterruptedException {
 		// TODO Auto-generated method stub
-		return queue;
+		/*try {
+			queue = input.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		return queue.take();
 	}
 
 	public boolean isMsgAvailable() {
 		// TODO Auto-generated method stub
-		return queue != null;
+		return !queue.isEmpty();
 	}
 
 	/**
@@ -83,7 +93,8 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				String msg=input.readLine();
-				queue = msg;
+				queue.put(msg);
+				System.out.println(queue);
 			} catch (Exception e) {
 				System.err.println(e.toString());
 			}
