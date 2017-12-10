@@ -18,6 +18,7 @@ public class RepositioningState extends CentralinaState{
 	@Override
 	public void doAction() {
 		this.centralina.resetRadar();
+		this.deg = this.centralina.getDeg();
 	}
 
 	@Override
@@ -26,6 +27,7 @@ public class RepositioningState extends CentralinaState{
 		 if(this.deg == 90 ) {
 			 try {
 				Thread.sleep(10);
+				this.centralina.radarOff();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
