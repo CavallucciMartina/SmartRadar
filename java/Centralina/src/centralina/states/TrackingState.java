@@ -11,6 +11,7 @@ public class TrackingState extends CentralinaState {
 
 	public TrackingState(Centralina centralina) {
 		super();
+		super.centralina = centralina;
 		this.distance = -1f;
 		this.objectTrackedTerminated = false;
 		this.buttonOffPressed = false;
