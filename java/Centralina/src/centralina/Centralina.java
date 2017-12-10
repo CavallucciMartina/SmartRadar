@@ -39,7 +39,9 @@ public class Centralina {
 		}
 		distance = -1f;
 		omega = 1;
-
+		this.setLedDetected(false);
+		this.setLedOn(false);
+		this.setLedTracking(false);
 		setCurrentState(new IdleState(this));
 	}
 
@@ -200,12 +202,12 @@ public class Centralina {
 	}
 
 	public void radarOff() {
-		this.serial.sendMsg("OFF\n");
+		this.serial.sendMsg("OFF");
 	}
 
 	public void resetRadar() {
 		this.currentDeg = 90;
-		this.serial.sendMsg("90\n");
+		this.serial.sendMsg("90");
 	}
 
 }
