@@ -37,7 +37,7 @@ void RadarCommTask::tick(){
         delay(1);
        }
        //Logger.log(String(prox->getDistance()));
-       Serial.println(String(prox->getDistance()));
+       Serial.print(String(prox->getDistance()));
     } else {
        //Logger.log("RADAR: ERROR - wrong message sent.");
     }
