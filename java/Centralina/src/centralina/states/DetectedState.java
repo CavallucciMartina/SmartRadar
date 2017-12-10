@@ -14,9 +14,9 @@ public class DetectedState extends CentralinaState{
 	public float timeFromStateStart;
 	public float maximumLedOnTime;
 	
-	public DetectedState(Centralina centralina) {
-		this.previousDistance = this.centralina.getDistance();
+	public DetectedState(Centralina centralina) {		
 		this.centralina = centralina;
+		this.previousDistance = this.centralina.getDistance();
 		this.newDistance = -1f;
 		this.delta = 1f;
 		this.objectTerminated = false;

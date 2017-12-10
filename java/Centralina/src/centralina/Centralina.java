@@ -74,9 +74,11 @@ public class Centralina {
 	public float getDistance() {
 		if (serial.isMsgAvailable()) {
 			try {
-				distance = Float.parseFloat(this.serial.receiveMsg());
+				String ciao = this.serial.receiveMsg();
+				System.out.println(ciao);
+				System.out.println("valore");
+				distance = Float.parseFloat(ciao);
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -194,7 +196,7 @@ public class Centralina {
 	 * return this.clockWise; }
 	 */
 	public void radarOn() {
-		this.serial.sendMsg("ON\n");
+		this.serial.sendMsg("ON");
 	}
 
 	public void radarOff() {
