@@ -24,10 +24,10 @@ void RadarCommTask::tick(){
     const String& content = msg->getContent();
     if (content == MSG_ENTER_REQUEST){
       led->switchOn();
-      Logger.log("RADAR: enter request.");
+      //Logger.log("RADAR: enter request.");
     } else if (content == MSG_STOP_REQUEST){
       led->switchOff();
-      Logger.log("RADAR: stop request.");
+      //Logger.log("RADAR: stop request.");
       sleepNow();
     } else if (content.toInt() <= 180 && content.toInt() >= 0) {
        int actualDeg = servo->read();
@@ -36,9 +36,10 @@ void RadarCommTask::tick(){
        for (int i = 0; i < abs(actualDeg - newDeg); i++) {
         delay(1);
        }
-       Logger.log(String(prox->getDistance()));
+       //Logger.log(String(prox->getDistance()));
+       Serial.println(String(prox->getDistance()));
     } else {
-       Logger.log("RADAR: ERROR - wrong message sent.");
+       //Logger.log("RADAR: ERROR - wrong message sent.");
     }
     delete msg;    
   }
