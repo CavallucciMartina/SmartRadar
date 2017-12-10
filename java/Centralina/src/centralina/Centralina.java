@@ -37,7 +37,7 @@ public class Centralina {
 			System.out.println(port);
 			e.printStackTrace();
 		}
-		distance = -1f;
+		distance = 10f;
 		omega = 1;
 		this.setLedDetected(false);
 		this.setLedOn(false);
@@ -69,30 +69,29 @@ public class Centralina {
 
 		this.currentDeg = (this.currentDeg + (this.clockWise ? 1 : -1)
 				* this.omega);
+
+		if (this.currentDeg < 0) {
+			this.currentDeg = 0;
+		}
+		if (this.currentDeg > 180) {
+			this.currentDeg = 180;
+		}
+
 		this.serial.sendMsg(String.valueOf(this.currentDeg));
 
 	}
 
 	public float getDistance() {
-		if (serial.isMsgAvailable()) {
-			try {
-				String ciao = this.serial.receiveMsg();
-				System.out.println(ciao);
-				System.out.println("valore");
-				distance = Float.parseFloat(ciao);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			distance = Float.parseFloat(this.serial.receiveMsg());
+			System.out.println(distance);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else{
-			distance = 3;
-		}
-		
-		return distance;
-
+	return distance;
 	}
 
 	/**
