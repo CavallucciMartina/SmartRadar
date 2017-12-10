@@ -21,11 +21,11 @@ public class Centralina {
 	private boolean clockWise;
 	private int omega;
 	
-	private Button buttonOn = new device.p4j.Button(13);
-	private Button buttonOff = new device.p4j.Button(19);
-	private device.Light ledOn = new Led(18);
-	private device.Light  ledDetected = new Led(16);
-	private device.Light  ledTracked =new Led(12);
+	private Button buttonOn = new device.p4j.Button(4);
+	private Button buttonOff = new device.p4j.Button(5);
+	private device.Light ledOn = new Led(12);
+	private device.Light  ledDetected = new Led(13);
+	private device.Light  ledTracked =new Led(14);
 	private static  int  INTERVAL = 20;
 	
 			
