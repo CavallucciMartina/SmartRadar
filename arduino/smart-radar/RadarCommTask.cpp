@@ -15,7 +15,7 @@ RadarCommTask::RadarCommTask(int ledPin, int servoPin, int echoPin, int trigPin)
   
 void RadarCommTask::init(int period){
   Task::init(period);
-  Logger.log("RADAR:Init");
+  //Logger.log("RADAR:Init");
 }
   
 void RadarCommTask::tick(){
