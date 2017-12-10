@@ -69,7 +69,7 @@ public class Centralina {
 
 		this.currentDeg = (this.currentDeg + (this.clockWise ? 1 : -1)
 				* this.omega);
-		this.serial.sendMsg(this.currentDeg + "\n");
+		this.serial.sendMsg(String.valueOf(this.currentDeg));
 
 	}
 
