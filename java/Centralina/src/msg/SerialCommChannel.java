@@ -61,12 +61,12 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 
 	public String receiveMsg() throws InterruptedException {
 		// TODO Auto-generated method stub
-		/*try {
+		try {
 			queue = input.readLine();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		return queue.take();
 	}
 
