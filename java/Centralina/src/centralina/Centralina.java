@@ -39,6 +39,7 @@ public class Centralina {
 		}
 		distance = 10f;
 		omega = 1;
+		currentDeg = 90;
 		this.setLedDetected(false);
 		this.setLedOn(false);
 		this.setLedTracking(false);
@@ -76,20 +77,28 @@ public class Centralina {
 			this.currentDeg = 180;
 		}
 		this.serial.sendMsg(String.valueOf(this.currentDeg));
-
-	}
-
-	public float getDistance() {
 		try {
-			distance = Float.parseFloat(this.serial.receiveMsg());
-			System.out.println(distance);
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while (!this.serial.isMsgAvailable()) {
+		}
+		try {
+			if (this.serial.isMsgAvailable()) {
+				distance = Float.parseFloat(this.serial.receiveMsg());
+			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	return distance;
+	}
+
+	public float getDistance() {
+		return distance;
 	}
 
 	/**
@@ -98,7 +107,7 @@ public class Centralina {
 	 * @return true if angle is 0 or 180, false otherwise
 	 */
 	public boolean shouldChangeDirection() {
-		return (this.currentDeg > 180 || this.currentDeg < 0);
+		return (this.currentDeg >= 180 || this.currentDeg <= 0);
 
 	}
 
@@ -196,15 +205,43 @@ public class Centralina {
 	 */
 	public void radarOn() {
 		this.serial.sendMsg("ON");
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void radarOff() {
 		this.serial.sendMsg("OFF");
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void resetRadar() {
 		this.currentDeg = 90;
 		this.serial.sendMsg("90");
+	}
+
+	public void moveRadar(int deg) {
+		this.serial.sendMsg(String.valueOf(deg));
+		while (!this.serial.isMsgAvailable()) {
+		}
+		try {
+			if (this.serial.isMsgAvailable()) {
+				distance = Float.parseFloat(this.serial.receiveMsg());
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

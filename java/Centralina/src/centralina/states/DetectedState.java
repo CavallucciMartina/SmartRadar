@@ -22,12 +22,14 @@ public class DetectedState extends CentralinaState{
 		this.objectTerminated = false;
 		this.timeFromStateStart = 0;
 		this.maximumLedOnTime = 0.1f;
+		this.centralina.setLedDetected(true);
 	}
 	
 	@Override
 	public void doAction() {
+		System.out.println("sono in DETECTED");
 		this.CheckObjectEnd();
-		this.CheckLedOnTime();	
+		this.CheckLedDetectedTime();	
 	}
 
 	@Override
@@ -54,10 +56,10 @@ public class DetectedState extends CentralinaState{
 		}
 	}
 	
-	private void CheckLedOnTime() {
+	private void CheckLedDetectedTime() {
 		this.timeFromStateStart += this.centralina.getStateExecutionInterval();
 		if (this.timeFromStateStart >= this.maximumLedOnTime) {
-			this.centralina.setLedOn(false);
+			this.centralina.setLedDetected(false);
 		}
 	}
 
