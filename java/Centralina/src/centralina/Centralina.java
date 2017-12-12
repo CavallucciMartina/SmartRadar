@@ -34,7 +34,7 @@ public class Centralina {
 
 	// Variables that give information on the state of the centralina
 
-	public Centralina(String port) {
+	public Centralina(String port, String omega) {
 		try {
 			this.serial = new SerialCommChannel(port, 9600);
 		} catch (Exception e) {
@@ -42,9 +42,9 @@ public class Centralina {
 			System.out.println(port);
 			e.printStackTrace();
 		}
-		distance = 10f;
-		omega = 1;
-		currentDeg = 90;
+		this.distance = 10f;
+		this.omega = Integer.valueOf(omega);
+		this.currentDeg = 90;
 		try {
 			this.w = new FileWriter("Logger.txt");
 		} catch (IOException e) {
