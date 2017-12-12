@@ -60,7 +60,7 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 	}
 
 	public String receiveMsg() throws InterruptedException {
-		// TODO Auto-generated method stub
+		Thread.sleep(10);
 		return queue.take();
 	}
 
