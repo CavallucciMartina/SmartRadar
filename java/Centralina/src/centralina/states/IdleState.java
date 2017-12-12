@@ -19,6 +19,12 @@ public class IdleState extends CentralinaState{
 	@Override
 	public CentralinaState nextState() {
 		if(onButtonPressed) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return new ScanningState(this.centralina);
 		}
 		else {
