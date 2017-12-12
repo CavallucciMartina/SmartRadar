@@ -33,7 +33,8 @@ public class RepositioningState extends CentralinaState{
 				e.printStackTrace();
 			}
 			 this.centralina.setLedOn(false);
-			 return this.centralina.reset();
+			 this.centralina.reset();
+			 return new IdleState(this.centralina);
 		}
 		return this;
 	

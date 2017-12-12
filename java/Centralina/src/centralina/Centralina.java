@@ -81,8 +81,7 @@ public class Centralina {
 		}
 	}
 	
-	public CentralinaState reset() {
-		this.serial.close();
+	public void reset() {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e1) {
@@ -96,14 +95,17 @@ public class Centralina {
 		this.setLedTracking(false);
 		this.clockWise = false;
 		try {
-			this.serial = new SerialCommChannel(port, 9600);
-		} catch (Exception e) {
+			this.serial.receiveMsg();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		CentralinaState state = new IdleState(this);
-		setCurrentState(state);
-		return state;
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	public CentralinaState getCurrentState() {

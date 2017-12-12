@@ -30,8 +30,6 @@ public class IdleState extends CentralinaState{
 			this.onButtonPressed = true;
 			this.centralina.setLedOn(true);
 			this.centralina.radarOn();
-			//getDistance should return an ACK message equal to 123456
-			//while (this.centralina.getDistance() != 123456f){}
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
