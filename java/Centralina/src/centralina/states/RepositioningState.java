@@ -17,7 +17,6 @@ public class RepositioningState extends CentralinaState{
 
 	@Override
 	public void doAction() {
-		System.out.println("sono in REPOSITIONING");
 		this.centralina.resetRadar();
 		this.deg = this.centralina.getDeg();
 	}
@@ -35,7 +34,6 @@ public class RepositioningState extends CentralinaState{
 			}
 			 this.centralina.setLedOn(false);
 			 return this.centralina.reset();
-			 //return new IdleState(this.centralina);
 		}
 		return this;
 	

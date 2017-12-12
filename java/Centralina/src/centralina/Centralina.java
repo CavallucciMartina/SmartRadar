@@ -23,6 +23,7 @@ public class Centralina {
 	private String port;
 	private FileWriter w;
     private BufferedWriter b;
+    private int countObject;
 
 	private Button buttonOn = new device.p4j.Button(4);
 	private Button buttonOff = new device.p4j.Button(5);
@@ -55,10 +56,19 @@ public class Centralina {
 		this.setLedDetected(false);
 		this.setLedOn(false);
 		this.setLedTracking(false);
-		
+		this.countObject = 0;
 		this.writeOnLogger("\n\nNEW ACCESS TO CENTRALINA\n");
 		
 		setCurrentState(new IdleState(this));
+	}
+	
+	public void objectDetected() {
+		this.countObject++;
+	}
+	
+	private void resetCounterObject() {
+		System.out.println("TOTAL OBJECT DETECTED: " + this.countObject);
+		this.countObject = 0;
 	}
 	
 	public void writeOnLogger(String s) {
@@ -115,7 +125,7 @@ public class Centralina {
 		// store distance in variable
 		if (this.shouldChangeDirection()) {
 			this.clockWise = !this.clockWise;
-
+			this.resetCounterObject();
 		}
 
 		this.currentDeg = (this.currentDeg + (this.clockWise ? 1 : -1)

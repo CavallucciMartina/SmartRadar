@@ -16,7 +16,7 @@ public class Button extends ObservableButton {
 	public Button(int pinNum){
 		super();
 		
-		System.out.println(pinNum);
+		//System.out.println(pinNum);
 		try {
 			
 		    GpioController gpio = GpioFactory.getInstance();
@@ -42,7 +42,7 @@ public class Button extends ObservableButton {
 
 		public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event)  {
         	Event ev = null;
-            System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
+            //System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
             if (event.getState().isHigh()){
             	ev = new ButtonPressed(button);
             } else {

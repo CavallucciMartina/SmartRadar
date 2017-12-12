@@ -19,7 +19,6 @@ public class ScanningState extends CentralinaState {
 
 	@Override
 	public void doAction() {
-		System.out.println("sono in SCANNING");
 		this.checkNewObject();
 		this.checkOffButtonPressed();
 	}

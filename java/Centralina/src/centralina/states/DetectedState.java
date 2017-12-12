@@ -30,13 +30,13 @@ public class DetectedState extends CentralinaState{
 				+ " - OBJECT DETECTED AT ANGLE: "
 				+ this.centralina.getDeg();
 		System.out.println(output);
+		this.centralina.objectDetected();
 		this.centralina.writeOnLogger(output);
 		
 	}
 	
 	@Override
 	public void doAction() {
-		//System.out.println("sono in DETECTED");
 		this.CheckObjectEnd();
 		this.CheckLedDetectedTime();	
 	}

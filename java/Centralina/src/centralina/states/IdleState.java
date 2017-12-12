@@ -12,7 +12,6 @@ public class IdleState extends CentralinaState{
 	
 	@Override
 	public void doAction() {
-		System.out.println("sono in IDLE");
 		checkOnButtonPressed();		
 	}
 
