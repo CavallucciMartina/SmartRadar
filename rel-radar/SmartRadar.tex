@@ -7,7 +7,6 @@
 	{\fontsize{10}{12} Martina Cavallucci  765565
 		\newline Matteo Magnini      731659
 		\newline Alfredo Tonelli 759161
-		\newline Shapour Nemati -----------
 	}
 	
 	\section{Architettura e funzionamento del sistema}
@@ -36,7 +35,7 @@ Il sistema inizia a scandagliare l'ambiente finche' non si verifica uno dei tre 
 
 
 	In figura 2 sono descritti nel dettaglio lo stato DETECTED e lo stato TRACKING.
-	All'interno dello stato DETECTED viene controllato se la differenza tra la distanza corrente e la distanza precedente e' maggiore di un certo delta fissato da noi per capire se un oggetto è "finito" allora il ledDetected viene spento e si torna allo stato di SCANNING; inoltre anche se si arriva ai limiti di movimeno del servo si ritorna allo stato di SCANNING.
+	All'interno dello stato DETECTED viene controllato se la differenza tra la distanza corrente e la distanza precedente e' maggiore di un certo delta fissato da noi per capire se un oggetto e' "finito orizzontalmente" allora il ledDetected viene spento e si torna allo stato di SCANNING; inoltre anche se si arriva ai limiti di movimeno del servo si ritorna allo stato di SCANNING.
 	All'interno dello stato TRACKING,invece, controllo se l'oggetto non viene piu' rilevato come troppo vicino e quindi torno allo stato di SCANNING oppure controllo se viene premuto il bottonOff e passo allo stato di REPOSITIONING il quale si occupera' di riposizionare il servo e di resettare alcune variabili significative.
 
 	\newpage
@@ -50,8 +49,5 @@ Il sistema inizia a scandagliare l'ambiente finche' non si verifica uno dei tre 
 In figura 3 si descrive lo stato di REPOSITIONING nel quale resetto l'angolazione a 90$^{\circ}$ e comunico ad Arduino l'angolazione che il servo deve tenere.
 
 
-
-	\section{Guida utente}
-	.................
 
 \end{document}

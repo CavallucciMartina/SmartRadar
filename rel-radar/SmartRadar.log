@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.11.18)  7 DEC 2017 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.11.18)  12 DEC 2017 19:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -134,54 +134,52 @@ e
 <figura1.jpg, id=1, 786.94pt x 352.31625pt>
 File: figura1.jpg Graphic file (type jpg)
 <use figura1.jpg>
-Package pdftex.def Info: figura1.jpg  used on input line 17. on input line 17.
+Package pdftex.def Info: figura1.jpg  used on input line 16. on input line 16.
 Package pdftex.def Info: Requested size: 393.46904pt x 176.15768pt on input lin
-e 17.
+e 16.
 
-Overfull \hbox (48.46904pt too wide) in paragraph at lines 17--18
+Overfull \hbox (48.46904pt too wide) in paragraph at lines 16--17
  [][] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 21.
+(Font)              <7> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 21.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
+(Font)              <5> on input line 20.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 23.
 (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 23.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figura1.jpg>]
 <figura2.jpg, id=12, 770.88pt x 365.365pt>
 File: figura2.jpg Graphic file (type jpg)
 <use figura2.jpg>
-Package pdftex.def Info: figura2.jpg  used on input line 33. on input line 33.
+Package pdftex.def Info: figura2.jpg  used on input line 32. on input line 32.
 Package pdftex.def Info: Requested size: 462.53157pt x 219.22069pt on input lin
-e 33.
+e 32.
 
-Overfull \hbox (117.53157pt too wide) in paragraph at lines 33--34
+Overfull \hbox (117.53157pt too wide) in paragraph at lines 32--33
  [][] 
  []
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
 [2 <./figura2.jpg>]
 <figura3.jpg, id=16, 439.6425pt x 256.96pt>
 File: figura3.jpg Graphic file (type jpg)
 <use figura3.jpg>
-Package pdftex.def Info: figura3.jpg  used on input line 45. on input line 45.
+Package pdftex.def Info: figura3.jpg  used on input line 44. on input line 44.
 Package pdftex.def Info: Requested size: 351.71446pt x 205.56827pt on input lin
-e 45.
+e 44.
 
-Overfull \hbox (6.71446pt too wide) in paragraph at lines 45--46
+Overfull \hbox (6.71446pt too wide) in paragraph at lines 44--45
  [][] 
  []
 
 
-Overfull \hbox (19.40224pt too wide) in paragraph at lines 50--51
+Overfull \hbox (19.40224pt too wide) in paragraph at lines 49--50
 []\OT1/cmr/m/n/10 In figura 3 si de-scrive lo stato di REPO-SI-TION-ING nel qua
 le re-setto l'angolazione
  []
@@ -200,7 +198,7 @@ ic/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
 r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on SmartRadar.pdf (3 pages, 198929 bytes).
+Output written on SmartRadar.pdf (3 pages, 176096 bytes).
 PDF statistics:
  37 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream
