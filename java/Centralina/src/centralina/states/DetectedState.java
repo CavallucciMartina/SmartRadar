@@ -26,9 +26,12 @@ public class DetectedState extends CentralinaState{
 		this.maximumLedOnTime = 0.1f;
 		this.centralina.setLedDetected(true);
 		
-		System.out.println("TIME: " + LocalDateTime.now()
+		String output = "TIME: " + LocalDateTime.now()
 				+ " - OBJECT DETECTED AT ANGLE: "
-				+ this.centralina.getDeg());
+				+ this.centralina.getDeg();
+		System.out.println(output);
+		this.centralina.writeOnLogger(output);
+		
 	}
 	
 	@Override

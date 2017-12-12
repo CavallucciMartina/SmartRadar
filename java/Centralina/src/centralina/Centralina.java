@@ -1,10 +1,11 @@
 package centralina;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import centralina.states.*;
 import device.Button;
 import device.p4j.Led;
-import msg.CommChannel;
 import msg.SerialCommChannel;
 
 public class Centralina {
@@ -20,6 +21,8 @@ public class Centralina {
 	private boolean clockWise;
 	private int omega;
 	private String port;
+	private FileWriter w;
+    private BufferedWriter b;
 
 	private Button buttonOn = new device.p4j.Button(4);
 	private Button buttonOff = new device.p4j.Button(5);
@@ -41,11 +44,31 @@ public class Centralina {
 		distance = 10f;
 		omega = 1;
 		currentDeg = 90;
+		try {
+			this.w = new FileWriter("Logger.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.b = new BufferedWriter (w);
 		this.port = port;
 		this.setLedDetected(false);
 		this.setLedOn(false);
 		this.setLedTracking(false);
+		
+		this.writeOnLogger("\n\nNEW ACCESS TO CENTRALINA\n");
+		
 		setCurrentState(new IdleState(this));
+	}
+	
+	public void writeOnLogger(String s) {
+		try {
+			this.b.write(s + "\n");
+			this.b.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public CentralinaState reset() {
