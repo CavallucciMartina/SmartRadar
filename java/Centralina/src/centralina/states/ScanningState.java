@@ -25,14 +25,14 @@ public class ScanningState extends CentralinaState {
 
 	@Override
 	public CentralinaState nextState() {
-		if(this.objectDetected && !this.tracking) {
-			return new DetectedState(this.centralina);
+		if(offButtonPressed) {
+			return new RepositioningState(this.centralina);
 		}
 		else if(this.objectDetected && this.tracking) {			
 			return new TrackingState(this.centralina);
 		}
-		else if(offButtonPressed) {
-			return new RepositioningState(this.centralina);
+		else if(this.objectDetected && !this.tracking) {
+			return new DetectedState(this.centralina);
 		}
 		else {
 			return this;

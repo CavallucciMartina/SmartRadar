@@ -15,6 +15,7 @@ public class DetectedState extends CentralinaState{
 	//time passed since this state has been started. Used for turning off the led after 0.1
 	public float timeFromStateStart;
 	public float maximumLedOnTime;
+	private boolean offButtonPressed;
 	
 	public DetectedState(Centralina centralina) {		
 		this.centralina = centralina;
@@ -23,6 +24,7 @@ public class DetectedState extends CentralinaState{
 		this.delta = 1f;
 		this.objectTerminated = false;
 		this.timeFromStateStart = 0;
+		this.offButtonPressed = false;
 		this.maximumLedOnTime = 0.1f;
 		this.centralina.setLedDetected(true);
 		
@@ -38,11 +40,15 @@ public class DetectedState extends CentralinaState{
 	@Override
 	public void doAction() {
 		this.CheckObjectEnd();
-		this.CheckLedDetectedTime();	
+		this.CheckLedDetectedTime();
+		this.checkOffButtonPressed();
 	}
 
 	@Override
 	public CentralinaState nextState() {
+		if(offButtonPressed) {
+			return new RepositioningState(this.centralina);
+		}
 		if (this.objectTerminated || this.centralina.shouldChangeDirection()) {
 			return new ScanningState(this.centralina);
 		} else if (this.newDistance <= this.centralina.MIN_DIST) {
@@ -69,6 +75,12 @@ public class DetectedState extends CentralinaState{
 		this.timeFromStateStart += this.centralina.getStateExecutionInterval();
 		if (this.timeFromStateStart >= this.maximumLedOnTime) {
 			this.centralina.setLedDetected(false);
+		}
+	}
+	
+	private void checkOffButtonPressed() {
+		if(this.centralina.IsButtonOffPressed()) {
+			this.offButtonPressed = true;
 		}
 	}
 
