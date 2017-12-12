@@ -13,12 +13,13 @@ public class Centralina {
 	public final static float MAX_DIST = 2f;
 
 	private CentralinaState currentState;
-	private CommChannel serial;
+	private SerialCommChannel serial;
 
 	private float distance;
 	private int currentDeg;
 	private boolean clockWise;
 	private int omega;
+	private String port;
 
 	private Button buttonOn = new device.p4j.Button(4);
 	private Button buttonOff = new device.p4j.Button(5);
@@ -40,10 +41,36 @@ public class Centralina {
 		distance = 10f;
 		omega = 1;
 		currentDeg = 90;
+		this.port = port;
 		this.setLedDetected(false);
 		this.setLedOn(false);
 		this.setLedTracking(false);
 		setCurrentState(new IdleState(this));
+	}
+	
+	public CentralinaState reset() {
+		this.serial.close();
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		this.currentDeg = 90;
+		this.distance = 10f;
+		this.setLedDetected(false);
+		this.setLedOn(false);
+		this.setLedTracking(false);
+		this.clockWise = false;
+		try {
+			this.serial = new SerialCommChannel(port, 9600);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CentralinaState state = new IdleState(this);
+		setCurrentState(state);
+		return state;
 	}
 
 	public CentralinaState getCurrentState() {

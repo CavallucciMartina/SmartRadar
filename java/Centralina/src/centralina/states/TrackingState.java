@@ -1,5 +1,7 @@
 package centralina.states;
 
+import java.time.LocalDateTime;
+
 import centralina.Centralina;
 import centralina.CentralinaState;
 
@@ -16,11 +18,17 @@ public class TrackingState extends CentralinaState {
 		this.objectTrackedTerminated = false;
 		this.buttonOffPressed = false;
 		this.centralina.setLedTracking(true);
+		
+		System.out.println("TIME: " + LocalDateTime.now()
+				+ " - OBJECT TRACKED AT ANGLE: "
+				+ this.centralina.getDeg()
+				+ " AT DISTANCE: "
+				+ this.centralina.getDistance());
 	
 	}
 	@Override
 	public void doAction() {
-		System.out.println("sono in TRACKING");
+		//System.out.println("sono in TRACKING");
 		this.CheckObjectTrackEnd();
 		this.CheckButtonOffPressed();
 	}

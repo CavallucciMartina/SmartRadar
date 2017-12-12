@@ -81,14 +81,14 @@ public class SerialCommChannel implements CommChannel, SerialPortEventListener {
 	}
 
 	/**
-	 * Handle an event on the serial port. Read the data and print it.
+	 * Handle an event on the serial port. Read the data and NOT print it.
 	 */
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				String msg = (String)input.readLine();
 				queue.put(msg);
-				System.out.println(queue);
+				//System.out.println(queue);
 			} catch (Exception e) {
 				System.err.println(e.toString());
 			}

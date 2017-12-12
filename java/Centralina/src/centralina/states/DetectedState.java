@@ -1,5 +1,7 @@
 package centralina.states;
 
+import java.time.LocalDateTime;
+
 import centralina.Centralina;
 import centralina.CentralinaState;
 
@@ -23,11 +25,15 @@ public class DetectedState extends CentralinaState{
 		this.timeFromStateStart = 0;
 		this.maximumLedOnTime = 0.1f;
 		this.centralina.setLedDetected(true);
+		
+		System.out.println("TIME: " + LocalDateTime.now()
+				+ " - OBJECT DETECTED AT ANGLE: "
+				+ this.centralina.getDeg());
 	}
 	
 	@Override
 	public void doAction() {
-		System.out.println("sono in DETECTED");
+		//System.out.println("sono in DETECTED");
 		this.CheckObjectEnd();
 		this.CheckLedDetectedTime();	
 	}

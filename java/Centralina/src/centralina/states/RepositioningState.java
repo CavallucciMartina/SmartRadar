@@ -33,9 +33,9 @@ public class RepositioningState extends CentralinaState{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//return new IdleState(new Centralina(this.centralina.getPort()));
 			 this.centralina.setLedOn(false);
-			 return new IdleState(this.centralina);
+			 return this.centralina.reset();
+			 //return new IdleState(this.centralina);
 		}
 		return this;
 	
